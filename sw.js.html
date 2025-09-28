@@ -1,0 +1,44 @@
+// Nombre de la caché (cámbielo si necesita forzar una actualización)
+const CACHE_NAME = 'instrumento-v1';
+// Lista de archivos a guardar en la caché
+const urlsToCache = [
+  // Ruta base (si su app está en la raíz del dominio)
+  '/', 
+  // Los archivos necesarios para que la app funcione
+  '/instrumento_inclusion.html',
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
+];
+
+// Evento 'install': Se ejecuta la primera vez que se carga la PWA.
+// Aquí se abre la caché y se guardan todos los archivos de 'urlsToCache'.
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Caché abierta: archivos pre-cargados.');
+        return cache.addAll(urlsToCache);
+      })
+      .catch(error => {
+        console.error('Error al precargar la caché:', error);
+      })
+  );
+});
+
+// Evento 'fetch': Se ejecuta cada vez que la PWA solicita un recurso (archivo).
+// Intentará devolver el recurso desde la caché antes de ir a la red.
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => {
+        // Devuelve el recurso de la caché si se encuentra
+        if (response) {
+          return response;
+        }
+
+        // Si no está en caché, continúa con la petición de red (para otras URLs)
+        return fetch(event.request);
+      })
+  );
+});
