@@ -1,7 +1,8 @@
 {
-  "name": "Instrumento de Inclusión DUA",
+  "name": "Instrumento de Revisión para una Propuesta Didáctica Inclusiva",
   "short_name": "Revisión DUA",
-  "start_url": "./",  <-- ¡CAMBIO CLAVE! Esto apunta a index.html
+  "description": "Herramienta digital para evaluar planes de clase según los principios del Diseño Universal para el Aprendizaje (DUA) y obtener recomendaciones automáticas.",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
