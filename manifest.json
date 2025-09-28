@@ -1,7 +1,7 @@
 {
   "name": "Instrumento de Inclusión DUA",
   "short_name": "Revisión DUA",
-  "start_url": "./instrumento_inclusion.html",
+  "start_url": "./",  <-- ¡CAMBIO CLAVE! Esto apunta a index.html
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007bff",
