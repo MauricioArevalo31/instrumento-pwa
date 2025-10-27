@@ -2,12 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Instrumento de Revisión - Inclusión</title>
+  <title>Instrumento de Revisión - Inclusión (Actualizado)</title>
   <link rel="manifest" href="manifest.json">
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.4; }
     h2 { margin-bottom: 4px; text-align: center; }
-    /* La regla .logo ha sido eliminada */
     table { border-collapse: collapse; width: 100%; margin-bottom: 26px; }
     th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
     th { background: #f4f4f4; }
@@ -31,6 +30,19 @@
     .instructions li {
         margin-bottom: 5px;
     }
+    .criterio-pregunta {
+        font-weight: bold; /* Destacar la pregunta principal */
+    }
+    .ejemplo {
+        display: block;
+        font-size: 0.9em;
+        color: #555;
+        margin-top: 5px;
+    }
+    .nota-importante {
+      color: #cc0000;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -45,59 +57,84 @@
         <li>3) El sistema descargará un documento de texto con un prompt, que luego podrás copiar y pegar en la aplicación de IA que uses habitualmente. Para obtener recomendaciones más específicas, adjunta también tu planificación al momento de usar la IA de tu preferencia.</li>
     </ul>
   </div>
-  <h3 class="section-title">Sección 1: Representación del Contenido</h3>
+
+  <h3 class="section-title">Sección 1: Representación y Accesibilidad del Contenido</h3>
 <table>
   <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  <tr><td>1.1</td><td>¿Se presentan los contenidos utilizando diversos medios y formatos (textos, imágenes, videos, audios, gráficos, etc.) que faciliten la comprensión desde distintos estilos de aprendizaje?</td>
+  
+  <tr><td>1.1</td><td>
+    <span class="criterio-pregunta">¿Se presentan los contenidos de manera diversa (textos, imágenes, videos, audios, gráficos, resúmenes, mapas conceptuales, etc.) para facilitar la comprensión desde distintos estilos y preferencias de aprendizaje?</span>
+  </td>
     <td><input type="radio" name="item1_1" value="Sí"></td><td><input type="radio" name="item1_1" value="Parcial"></td><td><input type="radio" name="item1_1" value="No"></td><td><textarea id="obs1_1"></textarea></td></tr>
-  <tr><td>1.2</td><td>¿La propuesta incorpora variaciones en la presentación de la información (por ejemplo, resúmenes, mapas conceptuales o infografías) para adaptarse a las preferencias de aprendizaje?</td>
+    
+  <tr><td>1.2</td><td>
+    <span class="nota-importante">Solo para propuestas híbridas o virtuales:</span> <span class="criterio-pregunta">¿La planificación contempla criterios de accesibilidad digital y comunicacional que garanticen la participación de todos los estudiantes?</span> 
+    <span class="ejemplo">Ej.: subtítulos o transcripciones en videos, contraste visual adecuado, materiales descargables accesibles.</span>
+  </td>
     <td><input type="radio" name="item1_2" value="Sí"></td><td><input type="radio" name="item1_2" value="Parcial"></td><td><input type="radio" name="item1_2" value="No"></td><td><textarea id="obs1_2"></textarea></td></tr>
-  <tr><td>1.3</td><td>¿Se planifican estrategias para conectar el contenido con contextos y experiencias diversas, permitiendo que todos los estudiantes encuentren significado en el aprendizaje?</td>
+    
+  <tr><td>1.3</td><td>
+    <span class="criterio-pregunta">¿El contenido se conecta con contextos y experiencias significativas para los estudiantes, favoreciendo la comprensión y el sentido del aprendizaje?</span>
+    <span class="ejemplo">Ej.: vinculación con ejemplos reales, proyectos o problemáticas del entorno.</span>
+  </td>
     <td><input type="radio" name="item1_3" value="Sí"></td><td><input type="radio" name="item1_3" value="Parcial"></td><td><input type="radio" name="item1_3" value="No"></td><td><textarea id="obs1_3"></textarea></td></tr>
 </table>
 
-<h3 class="section-title">Sección 2: Acción y Expresión</h3>
+<h3 class="section-title">Sección 2: Acción, Expresión y Flexibilidad</h3>
 <table>
   <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  <tr><td>2.1</td><td>¿La planificación ofrece múltiples opciones para que los estudiantes demuestren lo aprendido (por ejemplo, presentaciones, proyectos, debates, creaciones artísticas, escritos, etc.)?</td>
+  
+  <tr><td>2.1</td><td>
+    <span class="criterio-pregunta">¿Se ofrecen diversas opciones y recursos para que los estudiantes expresen lo aprendido según sus intereses, fortalezas y estilos?</span>
+    <span class="ejemplo">Ej.: elección libre del formato de entrega, uso de herramientas digitales o creaciones colaborativas.</span>
+  </td>
     <td><input type="radio" name="item2_1" value="Sí"></td><td><input type="radio" name="item2_1" value="Parcial"></td><td><input type="radio" name="item2_1" value="No"></td><td><textarea id="obs2_1"></textarea></td></tr>
-  <tr><td>2.2</td><td>¿Se proponen herramientas y recursos que faciliten diferentes formas de expresión (organizadores gráficos, aplicaciones digitales, actividades prácticas, etc.)?</td>
+    
+  <tr><td>2.2</td><td>
+    <span class="criterio-pregunta">¿La planificación prevé la adaptación de las formas de evaluación y expresión según las necesidades individuales, promoviendo equidad y autonomía?</span>
+    <span class="ejemplo">Ej.: rúbricas flexibles, opciones de exposición oral o escrita, trabajo por roles.</span>
+  </td>
     <td><input type="radio" name="item2_2" value="Sí"></td><td><input type="radio" name="item2_2" value="Parcial"></td><td><input type="radio" name="item2_2" value="No"></td><td><textarea id="obs2_2"></textarea></td></tr>
-  <tr><td>2.3</td><td>¿La propuesta permite ajustar la forma de expresión y evaluación según los intereses y fortalezas de cada estudiante?</td>
-    <td><input type="radio" name="item2_3" value="Sí"></td><td><input type="radio" name="item2_3" value="Parcial"></td><td><input type="radio" name="item2_3" value="No"></td><td><textarea id="obs2_3"></textarea></td></tr>
 </table>
 
-<h3 class="section-title">Sección 3: Compromiso y Participación</h3>
+<h3 class="section-title">Sección 3: Compromiso, Participación y Metacognición</h3>
 <table>
   <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  <tr><td>3.1</td><td>¿La propuesta incluye actividades motivadoras y significativas que conecten con los intereses y contextos de los estudiantes?</td>
+  
+  <tr><td>3.1</td><td>
+    <span class="criterio-pregunta">¿La propuesta incluye actividades motivadoras y significativas que conecten con los intereses, contextos y experiencias de los estudiantes, promoviendo la participación activa y colaborativa?</span>
+    <span class="ejemplo">Ej.: desafíos, debates, proyectos vinculados a temas de interés, trabajo en equipos heterogéneos.</span>
+  </td>
     <td><input type="radio" name="item3_1" value="Sí"></td><td><input type="radio" name="item3_1" value="Parcial"></td><td><input type="radio" name="item3_1" value="No"></td><td><textarea id="obs3_1"></textarea></td></tr>
-  <tr><td>3.2</td><td>¿Se planifican estrategias para promover la participación activa y colaborativa, permitiendo que todos contribuyan desde sus fortalezas?</td>
+    
+  <tr><td>3.2</td><td>
+    <span class="criterio-pregunta">¿Se generan instancias de reflexión y metacognición donde los estudiantes puedan valorar su proceso, compartir experiencias y ajustar sus estrategias de aprendizaje?</span>
+    <span class="ejemplo">Ej.: autoevaluaciones, diarios reflexivos, debates sobre aprendizajes logrados.</span>
+  </td>
     <td><input type="radio" name="item3_2" value="Sí"></td><td><input type="radio" name="item3_2" value="Parcial"></td><td><input type="radio" name="item3_2" value="No"></td><td><textarea id="obs3_2"></textarea></td></tr>
-  <tr><td>3.3</td><td>¿Existen oportunidades para que los estudiantes reflexionen y compartan sus experiencias de aprendizaje durante la clase?</td>
-    <td><input type="radio" name="item3_3" value="Sí"></td><td><input type="radio" name="item3_3" value="Parcial"></td><td><input type="radio" name="item3_3" value="No"></td><td><textarea id="obs3_3"></textarea></td></tr>
 </table>
 
-<h3 class="section-title">Sección 4: Diversidad y Contextualización</h3>
+<h3 class="section-title">Sección 4: Diversidad, Evaluación y Retroalimentación</h3>
 <table>
   <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  <tr><td>4.1</td><td>¿La propuesta reconoce y valora la diversidad de antecedentes, intereses y estilos de aprendizaje presentes en el grupo?</td>
+  
+  <tr><td>4.1</td><td>
+    <span class="criterio-pregunta">¿La propuesta reconoce y valora la diversidad del grupo (antecedentes, intereses, estilos, contextos culturales), promoviendo el respeto y el sentido de pertenencia?</span>
+    <span class="ejemplo">Ej.: diagnóstico inicial, agrupamientos flexibles, inclusión de perspectivas culturales diversas.</span>
+  </td>
     <td><input type="radio" name="item4_1" value="Sí"></td><td><input type="radio" name="item4_1" value="Parcial"></td><td><input type="radio" name="item4_1" value="No"></td><td><textarea id="obs4_1"></textarea></td></tr>
-  <tr><td>4.2</td><td>¿Se contemplan estrategias para conectar el contenido con diferentes contextos culturales y experiencias de vida, enriqueciendo el aprendizaje?</td>
+    
+  <tr><td>4.2</td><td>
+    <span class="criterio-pregunta">¿Se utilizan instrumentos variados y flexibles de evaluación que valoren tanto el proceso como los logros de aprendizaje?</span>
+    <span class="ejemplo">Ej.: rúbricas, registros de desempeño, evidencias de progreso.</span>
+  </td>
     <td><input type="radio" name="item4_2" value="Sí"></td><td><input type="radio" name="item4_2" value="Parcial"></td><td><input type="radio" name="item4_2" value="No"></td><td><textarea id="obs4_2"></textarea></td></tr>
-  <tr><td>4.3</td><td>¿La planificación fomenta un ambiente de diálogo y respeto hacia diferentes perspectivas, fortaleciendo la inclusión y el sentido de pertenencia?</td>
+    
+  <tr><td>4.3</td><td>
+    <span class="criterio-pregunta">¿Se ofrece retroalimentación continua, constructiva y personalizada que oriente a los estudiantes en su proceso de mejora?</span>
+    <span class="ejemplo">Ej.: devoluciones orales o escritas, instancias de revisión y acompañamiento.</span>
+  </td>
     <td><input type="radio" name="item4_3" value="Sí"></td><td><input type="radio" name="item4_3" value="Parcial"></td><td><input type="radio" name="item4_3" value="No"></td><td><textarea id="obs4_3"></textarea></td></tr>
-</table>
-
-<h3 class="section-title">Sección 5: Evaluación y Retroalimentación</h3>
-<table>
-  <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  <tr><td>5.1</td><td>¿La evaluación utiliza instrumentos variados que permitan valorar el aprendizaje desde diferentes expresiones (rúbricas, portafolios, autoevaluación, etc.)?</td>
-    <td><input type="radio" name="item5_1" value="Sí"></td><td><input type="radio" name="item5_1" value="Parcial"></td><td><input type="radio" name="item5_1" value="No"></td><td><textarea id="obs5_1"></textarea></td></tr>
-  <tr><td>5.2</td><td>¿Se planifica retroalimentación continua y constructiva que oriente a los estudiantes en su proceso de aprendizaje?</td>
-    <td><input type="radio" name="item5_2" value="Sí"></td><td><input type="radio" name="item5_2" value="Parcial"></td><td><input type="radio" name="item5_2" value="No"></td><td><textarea id="obs5_2"></textarea></td></tr>
-  <tr><td>5.3</td><td>¿La evaluación reconoce el proceso y el esfuerzo, valorando el crecimiento y la participación activa de los estudiantes?</td>
-    <td><input type="radio" name="item5_3" value="Sí"></td><td><input type="radio" name="item5_3" value="Parcial"></td><td><input type="radio" name="item5_3" value="No"></td><td><textarea id="obs5_3"></textarea></td></tr>
 </table>
 
 
@@ -108,42 +145,48 @@
   <script>
     function generarTXT() {
       let texto = "Actúa como un asesor pedagógico experto en Diseño Universal para el Aprendizaje (DUA) y enseñanza inclusiva. A continuación, se presenta un resumen de las necesidades de mejora detectadas en un plan de clase:\n\n";
+      
+      // Lista de los 10 nuevos ítems con sus IDs y Preguntas actualizadas
       const items = [
-        
         // Sección 1
-        {id: "item1_1", pregunta: "¿Se presentan los contenidos utilizando diversos medios y formatos (textos, imágenes, videos, audios, gráficos, etc.) que faciliten la comprensión desde distintos estilos de aprendizaje?", obs: "obs1_1"},
-        {id: "item1_2", pregunta: "¿La propuesta incorpora variaciones en la presentación de la información (por ejemplo, resúmenes, mapas conceptuales o infografías) para adaptarse a las preferencias de aprendizaje?", obs: "obs1_2"},
-        {id: "item1_3", pregunta: "¿Se planifican estrategias para conectar el contenido con contextos y experiencias diversas, permitiendo que todos los estudiantes encuentren significado en el aprendizaje?", obs: "obs1_3"},
+        {id: "item1_1", pregunta: "¿Se presentan los contenidos de manera diversa (textos, imágenes, videos, audios, gráficos, resúmenes, mapas conceptuales, etc.) para facilitar la comprensión desde distintos estilos y preferencias de aprendizaje?", obs: "obs1_1"},
+        {id: "item1_2", pregunta: "Solo para propuestas híbridas o virtuales: ¿La planificación contempla criterios de accesibilidad digital y comunicacional que garanticen la participación de todos los estudiantes? (Ej.: subtítulos o transcripciones en videos, contraste visual, materiales descargables accesibles.)", obs: "obs1_2"},
+        {id: "item1_3", pregunta: "¿El contenido se conecta con contextos y experiencias significativas para los estudiantes, favoreciendo la comprensión y el sentido del aprendizaje? (Ej.: vinculación con ejemplos reales, proyectos o problemáticas del entorno.)", obs: "obs1_3"},
+        
         // Sección 2
-        {id: "item2_1", pregunta: "¿La planificación ofrece múltiples opciones para que los estudiantes demuestren lo aprendido (por ejemplo, presentaciones, proyectos, debates, creaciones artísticas, escritos, etc.)?", obs: "obs2_1"},
-        {id: "item2_2", pregunta: "¿Se proponen herramientas y recursos que faciliten diferentes formas de expresión (organizadores gráficos, aplicaciones digitales, actividades prácticas, etc.)?", obs: "obs2_2"},
-        {id: "item2_3", pregunta: "¿La propuesta permite ajustar la forma de expresión y evaluación según los intereses y fortalezas de cada estudiante?", obs: "obs2_3"},
+        {id: "item2_1", pregunta: "¿Se ofrecen diversas opciones y recursos para que los estudiantes expresen lo aprendido según sus intereses, fortalezas y estilos? (Ej.: elección libre del formato de entrega, uso de herramientas digitales o creaciones colaborativas.)", obs: "obs2_1"},
+        {id: "item2_2", pregunta: "¿La planificación prevé la adaptación de las formas de evaluación y expresión según las necesidades individuales, promoviendo equidad y autonomía? (Ej.: rúbricas flexibles, opciones de exposición oral o escrita, trabajo por roles.)", obs: "obs2_2"},
+        
         // Sección 3
-        {id: "item3_1", pregunta: "¿La propuesta incluye actividades motivadoras y significativas que conecten con los intereses y contextos de los estudiantes?", obs: "obs3_1"},
-        {id: "item3_2", pregunta: "¿Se planifican estrategias para promover la participación activa y colaborativa, permitiendo que todos contribuyan desde sus fortalezas?", obs: "obs3_2"},
-        {id: "item3_3", pregunta: "¿Existen oportunidades para que los estudiantes reflexionen y compartan sus experiencias de aprendizaje durante la clase?", obs: "obs3_3"},
+        {id: "item3_1", pregunta: "¿La propuesta incluye actividades motivadoras y significativas que conecten con los intereses, contextos y experiencias de los estudiantes, promoviendo la participación activa y colaborativa? (Ej.: desafíos, debates, proyectos vinculados a temas de interés, trabajo en equipos heterogéneos.)", obs: "obs3_1"},
+        {id: "item3_2", pregunta: "¿Se generan instancias de reflexión y metacognición donde los estudiantes puedan valorar su proceso, compartir experiencias y ajustar sus estrategias de aprendizaje? (Ej.: autoevaluaciones, diarios reflexivos, debates sobre aprendizajes logrados.)", obs: "obs3_2"},
+        
         // Sección 4
-        {id: "item4_1", pregunta: "¿La propuesta reconoce y valora la diversidad de antecedentes, intereses y estilos de aprendizaje presentes en el grupo?", obs: "obs4_1"},
-        {id: "item4_2", pregunta: "¿Se contemplan estrategias para conectar el contenido con diferentes contextos culturales y experiencias de vida, enriqueciendo el aprendizaje?", obs: "obs4_2"},
-        {id: "item4_3", pregunta: "¿La planificación fomenta un ambiente de diálogo y respeto hacia diferentes perspectivas, fortaleciendo la inclusión y el sentido de pertenencia?", obs: "obs4_3"},
-        // Sección 5
-        {id: "item5_1", pregunta: "¿La evaluación utiliza instrumentos variados que permitan valorar el aprendizaje desde diferentes expresiones (rúbricas, portafolios, autoevaluación, etc.)?", obs: "obs5_1"},
-        {id: "item5_2", pregunta: "¿Se planifica retroalimentación continua y constructiva que oriente a los estudiantes en su proceso de aprendizaje?", obs: "obs5_2"},
-        {id: "item5_3", pregunta: "¿La evaluación reconoce el proceso y el esfuerzo, valorando el crecimiento y la participación activa de los estudiantes?", obs: "obs5_3"}
-
+        {id: "item4_1", pregunta: "¿La propuesta reconoce y valora la diversidad del grupo (antecedentes, intereses, estilos, contextos culturales), promoviendo el respeto y el sentido de pertenencia? (Ej.: diagnóstico inicial, agrupamientos flexibles, inclusión de perspectivas culturales diversas.)", obs: "obs4_1"},
+        {id: "item4_2", pregunta: "¿Se utilizan instrumentos variados y flexibles de evaluación que valoren tanto el proceso como los logros de aprendizaje? (Ej.: rúbricas, registros de desempeño, evidencias de progreso.)", obs: "obs4_2"},
+        {id: "item4_3", pregunta: "¿Se ofrece retroalimentación continua, constructiva y personalizada que oriente a los estudiantes en su proceso de mejora? (Ej.: devoluciones orales o escritas, instancias de revisión y acompañamiento.)", obs: "obs4_3"}
       ];
+      
       let noItems="", parcialItems="";
       items.forEach(item => {
         const sel=document.querySelector('input[name="'+item.id+'"]:checked');
         const valor= sel? sel.value:"";
         const obs=document.getElementById(item.obs).value.trim();
+        
+        // El script se adapta a las nuevas IDs de 1.1 a 4.3 (total 10 ítems)
         if(valor==="No") noItems+="- "+item.pregunta+". Observaciones: "+(obs||"---")+"\n";
         if(valor==="Parcial") parcialItems+="- "+item.pregunta+". Observaciones: "+(obs||"---")+"\n";
       });
-      if(noItems) texto+=noItems+"\n"; else texto+="(No se detectaron elementos marcados como No.)\n\n";
-      texto+="también he logrado desarrollar parcialmente:\n\n";
-      if(parcialItems) texto+=parcialItems+"\n"; else texto+="(Ninguno)\n\n";
+      
+      if(noItems) texto+="Los elementos marcados como **NO** y que requieren atención prioritaria son:\n"+noItems+"\n"; 
+      else texto+="(No se detectaron elementos marcados como No.)\n\n";
+      
+      texto+="Los elementos marcados como **PARCIAL** y que necesitan refuerzo son:\n";
+      if(parcialItems) texto+=parcialItems+"\n"; 
+      else texto+="(Ninguno)\n\n";
+      
       texto+="Genera un LISTADO de 10 estrategias de modificación CONCRETAS y de aplicación inmediata para este plan de clase. La respuesta debe ser únicamente el listado SIN incluir justificaciones o explicaciones pedagógicas.";
+      
       const blob=new Blob([texto],{type:"text/plain;charset=utf-8"});
       const url=URL.createObjectURL(blob);
       const a=document.createElement('a');a.href=url;a.download="recomendaciones.txt";
