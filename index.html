@@ -1,198 +1,550 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Instrumento de Revisión - Inclusión (Actualizado)</title>
-  <link rel="manifest" href="manifest.json">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.4; }
-    h2 { margin-bottom: 4px; text-align: center; }
-    table { border-collapse: collapse; width: 100%; margin-bottom: 26px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
-    th { background: #f4f4f4; }
-    textarea { width: 100%; min-height: 56px; box-sizing: border-box; }
-    .btn { padding: 12px 18px; background: #007bff; color: #fff; border: none; cursor: pointer; font-size: 15px; border-radius: 5px; }
-    .btn:hover { background: #0056b3; }
-    .section-title { margin-top: 18px; margin-bottom: 6px; }
-    .center { text-align:center; margin-top: 12px; }
-    .instructions {
-        background-color: #f0f8ff; /* Azul claro para destacarlo */
-        border: 1px solid #cceeff;
-        padding: 15px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-    }
-    .instructions ul {
-        padding-left: 20px;
-        margin-top: 10px;
-    }
-    .instructions li {
-        margin-bottom: 5px;
-    }
-    .criterio-pregunta {
-        font-weight: bold; /* Destacar la pregunta principal */
-    }
-    .ejemplo {
-        display: block;
-        font-size: 0.9em;
-        color: #555;
-        margin-top: 5px;
-    }
-    .nota-importante {
-      color: #cc0000;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrumento DUA - Valoración de Propuestas de Clase</title>
+    
+
+<script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#006699',
+                        'secondary-gray': '#e5e7eb',
+                        'accent-green': '#059669',
+                        'soft-red': '#dc2626',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilo base para el cuerpo */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f8fa;
+        }
+        /* Estilos personalizados para los radios */
+        input[type="radio"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            display: inline-block;
+            width: 1.25rem; /* 20px */
+            height: 1.25rem; /* 20px */
+            border-radius: 50%;
+            border: 2px solid #9ca3af; /* gray-400 */
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input[type="radio"]:checked {
+            border: 5px solid #006699; /* primary-blue */
+            background-color: #f6f8fa; /* Fondo claro para contraste */
+        }
+        
+        /* Estilo para que la tabla sea responsiva */
+        @media (max-width: 768px) {
+            .table-responsive {
+                display: block;
+                overflow-x: auto;
+            }
+            .table-responsive table {
+                min-width: 900px; /* Ancho mínimo para la tabla con 10 items */
+            }
+        }
+    </style>
 </head>
-<body>
-  <h2>Instrumento de Revisión para una Propuesta Didáctica Inclusiva</h2>
-  
-  <div class="instructions">
-    <p>Esta planilla permite valorar la aplicación del Diseño Universal para el Aprendizaje (DUA) en tu propuesta de clase y recibir recomendaciones automáticas para mejorarla.</p>
-    <p>Solo necesitas:</p>
-    <ul>
-        <li>1) Completar la planilla respondiendo las preguntas tomando como referencia tu propuesta de clase o planificación (diario o anual).</li>
-        <li>2) Pulsar el botón “Generar recomendaciones”.</li>
-        <li>3) El sistema descargará un documento de texto con un prompt, que luego podrás copiar y pegar en la aplicación de IA que uses habitualmente. Para obtener recomendaciones más específicas, adjunta también tu planificación al momento de usar la IA de tu preferencia.</li>
-    </ul>
-  </div>
+<body class="bg-gray-100">
 
-  <h3 class="section-title">Sección 1: Representación y Accesibilidad del Contenido</h3>
-<table>
-  <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  
-  <tr><td>1.1</td><td>
-    <span class="criterio-pregunta">¿Se presentan los contenidos de manera diversa (textos, imágenes, videos, audios, gráficos, resúmenes, mapas conceptuales, etc.) para facilitar la comprensión desde distintos estilos y preferencias de aprendizaje?</span>
-  </td>
-    <td><input type="radio" name="item1_1" value="Sí"></td><td><input type="radio" name="item1_1" value="Parcial"></td><td><input type="radio" name="item1_1" value="No"></td><td><textarea id="obs1_1"></textarea></td></tr>
-    
-  <tr><td>1.2</td><td>
-    <span class="nota-importante">Solo para propuestas híbridas o virtuales:</span> <span class="criterio-pregunta">¿La planificación contempla criterios de accesibilidad digital y comunicacional que garanticen la participación de todos los estudiantes?</span> 
-    <span class="ejemplo">Ej.: subtítulos o transcripciones en videos, contraste visual adecuado, materiales descargables accesibles.</span>
-  </td>
-    <td><input type="radio" name="item1_2" value="Sí"></td><td><input type="radio" name="item1_2" value="Parcial"></td><td><input type="radio" name="item1_2" value="No"></td><td><textarea id="obs1_2"></textarea></td></tr>
-    
-  <tr><td>1.3</td><td>
-    <span class="criterio-pregunta">¿El contenido se conecta con contextos y experiencias significativas para los estudiantes, favoreciendo la comprensión y el sentido del aprendizaje?</span>
-    <span class="ejemplo">Ej.: vinculación con ejemplos reales, proyectos o problemáticas del entorno.</span>
-  </td>
-    <td><input type="radio" name="item1_3" value="Sí"></td><td><input type="radio" name="item1_3" value="Parcial"></td><td><input type="radio" name="item1_3" value="No"></td><td><textarea id="obs1_3"></textarea></td></tr>
-</table>
+    <header class="bg-primary-blue shadow-lg">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold text-white text-center">
+                Instrumento de apoyo para la planificación DUA
+            </h1>
+        </div>
+    </header>
 
-<h3 class="section-title">Sección 2: Acción, Expresión y Flexibilidad</h3>
-<table>
-  <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  
-  <tr><td>2.1</td><td>
-    <span class="criterio-pregunta">¿Se ofrecen diversas opciones y recursos para que los estudiantes expresen lo aprendido según sus intereses, fortalezas y estilos?</span>
-    <span class="ejemplo">Ej.: elección libre del formato de entrega, uso de herramientas digitales o creaciones colaborativas.</span>
-  </td>
-    <td><input type="radio" name="item2_1" value="Sí"></td><td><input type="radio" name="item2_1" value="Parcial"></td><td><input type="radio" name="item2_1" value="No"></td><td><textarea id="obs2_1"></textarea></td></tr>
-    
-  <tr><td>2.2</td><td>
-    <span class="criterio-pregunta">¿La planificación prevé la adaptación de las formas de evaluación y expresión según las necesidades individuales, promoviendo equidad y autonomía?</span>
-    <span class="ejemplo">Ej.: rúbricas flexibles, opciones de exposición oral o escrita, trabajo por roles.</span>
-  </td>
-    <td><input type="radio" name="item2_2" value="Sí"></td><td><input type="radio" name="item2_2" value="Parcial"></td><td><input type="radio" name="item2_2" value="No"></td><td><textarea id="obs2_2"></textarea></td></tr>
-</table>
+    <main class="max-w-6xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-6 md:p-10 rounded-xl shadow-2xl">
+            
 
-<h3 class="section-title">Sección 3: Compromiso, Participación y Metacognición</h3>
-<table>
-  <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  
-  <tr><td>3.1</td><td>
-    <span class="criterio-pregunta">¿La propuesta incluye actividades motivadoras y significativas que conecten con los intereses, contextos y experiencias de los estudiantes, promoviendo la participación activa y colaborativa?</span>
-    <span class="ejemplo">Ej.: desafíos, debates, proyectos vinculados a temas de interés, trabajo en equipos heterogéneos.</span>
-  </td>
-    <td><input type="radio" name="item3_1" value="Sí"></td><td><input type="radio" name="item3_1" value="Parcial"></td><td><input type="radio" name="item3_1" value="No"></td><td><textarea id="obs3_1"></textarea></td></tr>
-    
-  <tr><td>3.2</td><td>
-    <span class="criterio-pregunta">¿Se generan instancias de reflexión y metacognición donde los estudiantes puedan valorar su proceso, compartir experiencias y ajustar sus estrategias de aprendizaje?</span>
-    <span class="ejemplo">Ej.: autoevaluaciones, diarios reflexivos, debates sobre aprendizajes logrados.</span>
-  </td>
-    <td><input type="radio" name="item3_2" value="Sí"></td><td><input type="radio" name="item3_2" value="Parcial"></td><td><input type="radio" name="item3_2" value="No"></td><td><textarea id="obs3_2"></textarea></td></tr>
-</table>
+<div class="bg-blue-50 border-l-4 border-primary-blue p-4 rounded-lg mb-8 shadow-sm">
+                <p class="text-gray-700 mb-4 text-sm">
+                    Esta planilla permite valorar la aplicación del Diseño Universal para el Aprendizaje (DUA) en tu propuesta de clase y recibir recomendaciones automáticas para mejorarla.
+                </p>
+                <h3 class="text-lg font-bold text-primary-blue mb-2">Instrucciones:</h3>
+                <ol class="list-decimal list-inside text-gray-700 space-y-2 text-sm">
+                    <li>
+                        <strong>Completar la valoración:</strong> Responda las preguntas (Sí/Parcial/No) tomando como referencia tu propuesta de clase o planificación (diario o anual). Use el campo **Observaciones** para registrar evidencias, ejemplos o notas específicas sobre cada ítem.
+                    </li>
+                    <li>
+                        <strong>Generar recomendaciones:</strong> Pulsar el botón **“Generar recomendaciones”**.
+                    </li>
+                    <li>
+                        <strong>Usar la IA:</strong> El sistema descargará un documento de texto con un *prompt* listo para usar. Copia y pega el contenido en la aplicación de IA que uses habitualmente. Para obtener recomendaciones más específicas, adjunta también tu planificación al momento de usar la IA de tu preferencia.
+                    </li>
+                    <li class="mt-3">
+                        <strong class="text-primary-blue">Criterios de Valoración:</strong>
+                        <ul class="list-disc list-inside ml-5 mt-1 font-normal">
+                            <li><strong>Sí (2 pts):</strong> Criterio aplicado de forma sistemática y evidente.</li>
+                            <li><strong>Parcial (1 pt):</strong> Criterio aplicado de forma limitada o inconsistente.</li>
+                            <li><strong>No (0 pts):</strong> Criterio no aplicado o no visible en la propuesta.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
 
-<h3 class="section-title">Sección 4: Diversidad, Evaluación y Retroalimentación</h3>
-<table>
-  <tr><th>Ítem</th><th>Criterio / Pregunta</th><th>Sí</th><th>Parcial</th><th>No</th><th>Observaciones</th></tr>
-  
-  <tr><td>4.1</td><td>
-    <span class="criterio-pregunta">¿La propuesta reconoce y valora la diversidad del grupo (antecedentes, intereses, estilos, contextos culturales), promoviendo el respeto y el sentido de pertenencia?</span>
-    <span class="ejemplo">Ej.: diagnóstico inicial, agrupamientos flexibles, inclusión de perspectivas culturales diversas.</span>
-  </td>
-    <td><input type="radio" name="item4_1" value="Sí"></td><td><input type="radio" name="item4_1" value="Parcial"></td><td><input type="radio" name="item4_1" value="No"></td><td><textarea id="obs4_1"></textarea></td></tr>
-    
-  <tr><td>4.2</td><td>
-    <span class="criterio-pregunta">¿Se utilizan instrumentos variados y flexibles de evaluación que valoren tanto el proceso como los logros de aprendizaje?</span>
-    <span class="ejemplo">Ej.: rúbricas, registros de desempeño, evidencias de progreso.</span>
-  </td>
-    <td><input type="radio" name="item4_2" value="Sí"></td><td><input type="radio" name="item4_2" value="Parcial"></td><td><input type="radio" name="item4_2" value="No"></td><td><textarea id="obs4_2"></textarea></td></tr>
-    
-  <tr><td>4.3</td><td>
-    <span class="criterio-pregunta">¿Se ofrece retroalimentación continua, constructiva y personalizada que oriente a los estudiantes en su proceso de mejora?</span>
-    <span class="ejemplo">Ej.: devoluciones orales o escritas, instancias de revisión y acompañamiento.</span>
-  </td>
-    <td><input type="radio" name="item4_3" value="Sí"></td><td><input type="radio" name="item4_3" value="Parcial"></td><td><input type="radio" name="item4_3" value="No"></td><td><textarea id="obs4_3"></textarea></td></tr>
-</table>
+            <form id="dua-form">
+                
+                
 
+<div class="table-responsive">
+                    <table class="w-full text-sm text-left text-gray-700 border-collapse rounded-lg overflow-hidden">
+                        <thead class="text-xs uppercase bg-secondary-gray text-gray-700">
+                            <tr>
+                                <th scope="col" class="py-3 px-3 w-[5%] text-center border">Ítem</th>
+                                <th scope="col" class="py-3 px-6 w-[35%] border">Criterio DUA</th>
+                                <th scope="colgroup" colspan="3" class="py-3 px-6 w-[20%] text-center border">Valoración</th>
+                                <th scope="col" class="py-3 px-3 w-[40%] border">Observaciones</th>
+                            </tr>
+                            <tr class="bg-white">
+                                <th scope="col" class="py-2 px-3 border text-xs"></th>
+                                <th scope="col" class="py-2 px-6 border text-xs"></th>
+                                <th scope="col" class="py-2 px-3 border text-xs font-normal text-center">Sí (2)</th>
+                                <th scope="col" class="py-2 px-3 border text-xs font-normal text-center">Parcial (1)</th>
+                                <th scope="col" class="py-2 px-3 border text-xs font-normal text-center">No (0)</th>
+                                <th scope="col" class="py-2 px-3 border text-xs"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
 
-  <div class="center">
-    <button class="btn" onclick="generarTXT()">Generar Recomendaciones (descarga .txt)</button>
-  </div>
+<tr class="bg-primary-blue text-white">
+                                <td colspan="6" class="py-2 px-4 text-sm font-semibold border-x border-b border-primary-blue">
+                                    SECCIÓN 1: Principio de Representación (El Qué del Aprendizaje)
+                                </td>
+                            </tr>
+                            
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">1.1</td>
+                                <td class="py-3 px-6 border">
+                                    ¿Se presentan los contenidos de manera diversa (textos, imágenes, videos, audios, gráficos, resúmenes, mapas conceptuales, etc.) para facilitar la comprensión desde distintos estilos y preferencias de aprendizaje?
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_1" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_1" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_1" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s1_1" class="w-full p-2 border rounded-md focus:ring-primary-blue focus:border-primary-blue" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
 
-  <script>
-    function generarTXT() {
-      let texto = "Actúa como un asesor pedagógico experto en Diseño Universal para el Aprendizaje (DUA) y enseñanza inclusiva. A continuación, se presenta un resumen de las necesidades de mejora detectadas en un plan de clase:\n\n";
-      
-      // Lista de los 10 nuevos ítems con sus IDs y Preguntas actualizadas
-      const items = [
-        // Sección 1
-        {id: "item1_1", pregunta: "¿Se presentan los contenidos de manera diversa (textos, imágenes, videos, audios, gráficos, resúmenes, mapas conceptuales, etc.) para facilitar la comprensión desde distintos estilos y preferencias de aprendizaje?", obs: "obs1_1"},
-        {id: "item1_2", pregunta: "Solo para propuestas híbridas o virtuales: ¿La planificación contempla criterios de accesibilidad digital y comunicacional que garanticen la participación de todos los estudiantes? (Ej.: subtítulos o transcripciones en videos, contraste visual, materiales descargables accesibles.)", obs: "obs1_2"},
-        {id: "item1_3", pregunta: "¿El contenido se conecta con contextos y experiencias significativas para los estudiantes, favoreciendo la comprensión y el sentido del aprendizaje? (Ej.: vinculación con ejemplos reales, proyectos o problemáticas del entorno.)", obs: "obs1_3"},
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">1.2</td>
+                                <td class="py-3 px-6 border">
+                                    Solo para <span class="text-accent-green font-semibold">propuestas híbridas o virtuales:</span> ¿La planificación contempla criterios de accesibilidad digital y comunicacional que garanticen la participación de todos los estudiantes? <em>Ej.: subtítulos o transcripciones en videos, contraste visual adecuado, materiales descargables accesibles.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_2" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_2" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_2" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s1_2" class="w-full p-2 border rounded-md" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+                            
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">1.3</td>
+                                <td class="py-3 px-6 border">
+                                    ¿El contenido se conecta con contextos y experiencias significativas para los estudiantes, favoreciendo la comprensión y el sentido del aprendizaje? <em>Ej.: vinculación con ejemplos reales, proyectos o problemáticas del entorno.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_3" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_3" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s1_3" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s1_3" class="w-full p-2 border rounded-md" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+                            
+                            
+
+<tr class="bg-primary-blue text-white">
+                                <td colspan="6" class="py-2 px-4 text-sm font-semibold border-x border-b border-primary-blue">
+                                    SECCIÓN 2: Principio de Acción y Expresión (El Cómo del Aprendizaje)
+                                </td>
+                            </tr>
+
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">2.1</td>
+                                <td class="py-3 px-6 border">
+                                    ¿Se ofrecen diversas opciones y recursos para que los estudiantes expresen lo aprendido según sus intereses, fortalezas y estilos? <em>Ej.: elección libre del formato de entrega, uso de herramientas digitales o creaciones colaborativas.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s2_1" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s2_1" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s2_1" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s2_1" class="w-full p-2 border rounded-md" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">2.2</td>
+                                <td class="py-3 px-6 border">
+                                    ¿La planificación prevé la adaptación de las formas de evaluación y expresión según las necesidades individuales, promoviendo equidad y autonomía? <em>Ej.: rúbricas flexibles, opciones de exposición oral o escrita, trabajo por roles.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s2_2" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s2_2" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s2_2" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s2_2" class="w-full p-2 border rounded-md" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+                            
+                            
+
+<tr class="bg-primary-blue text-white">
+                                <td colspan="6" class="py-2 px-4 text-sm font-semibold border-x border-b border-primary-blue">
+                                    SECCIÓN 3: Principio de Compromiso y Participación (El Por Qué del Aprendizaje)
+                                </td>
+                            </tr>
+
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">3.1</td>
+                                <td class="py-3 px-6 border">
+                                    ¿La propuesta incluye actividades motivadoras y significativas que conecten con los intereses, contextos y experiencias de los estudiantes, promoviendo la participación activa y colaborativa? <em>Ej.: desafíos, debates, proyectos vinculados a temas de interés, trabajo en equipos heterogéneos.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s3_1" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s3_1" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s3_1" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s3_1" class="w-full p-2 border rounded-md" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">3.2</td>
+                                <td class="py-3 px-6 border">
+                                    ¿Se generan instancias de reflexión y metacognición donde los estudiantes puedan valorar su proceso, compartir experiencias y ajustar sus estrategias de aprendizaje? <em>Ej.: autoevaluaciones, diarios reflexivos, debates sobre aprendizajes logrados.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s3_2" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s3_2" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s3_2" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s3_2" class="w-full p-2 border rounded-md" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+                            
+                            
+
+<tr class="bg-primary-blue text-white">
+                                <td colspan="6" class="py-2 px-4 text-sm font-semibold border-x border-b border-primary-blue">
+                                    SECCIÓN 4: Criterios Transversales (Diversidad, Evaluación y Retroalimentación)
+                                </td>
+                            </tr>
+                            
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">4.1</td>
+                                <td class="py-3 px-6 border">
+                                    ¿La propuesta reconoce y valora la diversidad del grupo (antecedentes, intereses, estilos, contextos culturales), promoviendo el respeto y el sentido de pertenencia? <em>Ej.: diagnóstico inicial, agrupamientos flexibles, inclusión de perspectivas culturales diversas.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_1" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_1" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_1" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s4_1" class="w-full p-2 border rounded-md focus:ring-primary-blue focus:border-primary-blue" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">4.2</td>
+                                <td class="py-3 px-6 border">
+                                    ¿Se utilizan instrumentos variados y flexibles de evaluación que valoren tanto el proceso como los logros de aprendizaje? <em>Ej.: rúbricas, registros de desempeño, evidencias de progreso.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_2" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_2" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_2" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s4_2" class="w-full p-2 border rounded-md" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+
+                            <tr class="bg-white hover:bg-gray-50 border-b">
+                                <td class="py-3 px-3 text-center border">4.3</td>
+                                <td class="py-3 px-6 border">
+                                    ¿Se ofrece retroalimentación continua, constructiva y personalizada que oriente a los estudiantes en su proceso de mejora? <em>Ej.: devoluciones orales o escritas, instancias de revisión y acompañamiento.</em>
+                                </td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_3" value="2" required aria-label="Sí"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_3" value="1" aria-label="Parcial"></td>
+                                <td class="py-3 px-3 border text-center"><input type="radio" name="s4_3" value="0" aria-label="No"></td>
+                                <td class="py-3 px-3 border">
+                                    <textarea id="obs_s4_3" class="w-full p-2 border rounded-md" placeholder="Observaciones..."></textarea>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="flex justify-center mt-10">
+                    <button type="submit" class="bg-primary-blue hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-xl transition duration-300 transform hover:scale-105">
+                        Generar recomendaciones
+                    </button>
+                </div>
+            </form>
+            
+            
+
+<div id="report-container" class="mt-12 p-6 bg-secondary-gray rounded-xl border-t-4 border-primary-blue shadow-inner hidden">
+                <h2 class="text-2xl font-bold text-primary-blue mb-4 text-center">Informe de Valoración DUA</h2>
+                
+                <div id="score-summary" class="text-center mb-6 p-4 rounded-lg bg-white shadow">
+                    
+
+</div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    
+
+<div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-green">
+                        <h3 class="text-xl font-semibold text-accent-green mb-3 flex items-center">
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Fortalezas (Aplicación DUA Sólida)
+                        </h3>
+                        <ul id="fortalezas-list" class="list-disc list-inside text-gray-700 space-y-2">
+                            
+
+</ul>
+                    </div>
+                    
+                    
+
+<div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-soft-red">
+                        <h3 class="text-xl font-semibold text-soft-red mb-3 flex items-center">
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.395 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            Oportunidades de Mejora (Atención Prioritaria)
+                        </h3>
+                        <ul id="mejoras-list" class="list-disc list-inside text-gray-700 space-y-2">
+                            
+
+</ul>
+                    </div>
+                </div>
+                
+                <div id="observations-summary" class="mt-6 p-4 rounded-lg bg-white shadow">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Resumen de Observaciones</h3>
+                    <p id="obs-content" class="text-gray-600 italic"></p>
+                </div>
+            </div>
+
+            
+
+<div id="modal-alert" class="fixed inset-0 z-50 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+                <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm mx-4 transform transition-all duration-300">
+                    <h3 class="text-xl font-bold text-soft-red mb-3">Atención</h3>
+                    <p class="text-gray-700">Por favor, complete todas las preguntas de valoración (Sí/Parcial/No) antes de generar el informe.</p>
+                    <button onclick="document.getElementById('modal-alert').classList.add('hidden')" class="mt-4 bg-primary-blue hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-lg float-right">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Definición de los 10 ítems de la planilla con la nueva estructura y descripciones simplificadas para el JS
+        const DUA_ITEMS = [
+            { id: 's1_1', name: '1.1', desc: 'Representación: Contenidos diversos.' },
+            { id: 's1_2', name: '1.2', desc: 'Representación: Accesibilidad digital/comunicacional (híbridas/virtuales).' },
+            { id: 's1_3', name: '1.3', desc: 'Representación: Conexión con contextos y experiencias significativas.' },
+            
+            { id: 's2_1', name: '2.1', desc: 'Acción/Expresión: Diversas opciones y recursos para expresar lo aprendido.' },
+            { id: 's2_2', name: '2.2', desc: 'Acción/Expresión: Adaptación de formas de evaluación y expresión.' },
+            
+            { id: 's3_1', name: '3.1', desc: 'Compromiso: Actividades motivadoras y significativas.' },
+            { id: 's3_2', name: '3.2', desc: 'Compromiso: Instancias de reflexión y metacognición.' },
+            
+            { id: 's4_1', name: '4.1', desc: 'Transversal: Reconocimiento y valoración de la diversidad del grupo.' },
+            { id: 's4_2', name: '4.2', desc: 'Transversal: Instrumentos variados y flexibles de evaluación.' },
+            { id: 's4_3', name: '4.3', desc: 'Transversal: Retroalimentación continua, constructiva y personalizada.' },
+        ];
         
-        // Sección 2
-        {id: "item2_1", pregunta: "¿Se ofrecen diversas opciones y recursos para que los estudiantes expresen lo aprendido según sus intereses, fortalezas y estilos? (Ej.: elección libre del formato de entrega, uso de herramientas digitales o creaciones colaborativas.)", obs: "obs2_1"},
-        {id: "item2_2", pregunta: "¿La planificación prevé la adaptación de las formas de evaluación y expresión según las necesidades individuales, promoviendo equidad y autonomía? (Ej.: rúbricas flexibles, opciones de exposición oral o escrita, trabajo por roles.)", obs: "obs2_2"},
-        
-        // Sección 3
-        {id: "item3_1", pregunta: "¿La propuesta incluye actividades motivadoras y significativas que conecten con los intereses, contextos y experiencias de los estudiantes, promoviendo la participación activa y colaborativa? (Ej.: desafíos, debates, proyectos vinculados a temas de interés, trabajo en equipos heterogéneos.)", obs: "obs3_1"},
-        {id: "item3_2", pregunta: "¿Se generan instancias de reflexión y metacognición donde los estudiantes puedan valorar su proceso, compartir experiencias y ajustar sus estrategias de aprendizaje? (Ej.: autoevaluaciones, diarios reflexivos, debates sobre aprendizajes logrados.)", obs: "obs3_2"},
-        
-        // Sección 4
-        {id: "item4_1", pregunta: "¿La propuesta reconoce y valora la diversidad del grupo (antecedentes, intereses, estilos, contextos culturales), promoviendo el respeto y el sentido de pertenencia? (Ej.: diagnóstico inicial, agrupamientos flexibles, inclusión de perspectivas culturales diversas.)", obs: "obs4_1"},
-        {id: "item4_2", pregunta: "¿Se utilizan instrumentos variados y flexibles de evaluación que valoren tanto el proceso como los logros de aprendizaje? (Ej.: rúbricas, registros de desempeño, evidencias de progreso.)", obs: "obs4_2"},
-        {id: "item4_3", pregunta: "¿Se ofrece retroalimentación continua, constructiva y personalizada que oriente a los estudiantes en su proceso de mejora? (Ej.: devoluciones orales o escritas, instancias de revisión y acompañamiento.)", obs: "obs4_3"}
-      ];
-      
-      let noItems="", parcialItems="";
-      items.forEach(item => {
-        const sel=document.querySelector('input[name="'+item.id+'"]:checked');
-        const valor= sel? sel.value:"";
-        const obs=document.getElementById(item.obs).value.trim();
-        
-        // El script se adapta a las nuevas IDs de 1.1 a 4.3 (total 10 ítems)
-        if(valor==="No") noItems+="- "+item.pregunta+". Observaciones: "+(obs||"---")+"\n";
-        if(valor==="Parcial") parcialItems+="- "+item.pregunta+". Observaciones: "+(obs||"---")+"\n";
-      });
-      
-      if(noItems) texto+="Los elementos marcados como **NO** y que requieren atención prioritaria son:\n"+noItems+"\n"; 
-      else texto+="(No se detectaron elementos marcados como No.)\n\n";
-      
-      texto+="Los elementos marcados como **PARCIAL** y que necesitan refuerzo son:\n";
-      if(parcialItems) texto+=parcialItems+"\n"; 
-      else texto+="(Ninguno)\n\n";
-      
-      texto+="Genera un LISTADO de 10 estrategias de modificación CONCRETAS y de aplicación inmediata para este plan de clase. La respuesta debe ser únicamente el listado SIN incluir justificaciones o explicaciones pedagógicas.";
-      
-      const blob=new Blob([texto],{type:"text/plain;charset=utf-8"});
-      const url=URL.createObjectURL(blob);
-      const a=document.createElement('a');a.href=url;a.download="recomendaciones.txt";
-      document.body.appendChild(a);a.click();document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-  </script>
+        // Función para descargar el archivo TXT
+        function downloadTxtReport(content) {
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `prompt_DUA_recomendaciones_${new Date().toISOString().slice(0, 10)}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Función para generar el contenido del TXT (Ahora como un PROMPT para IA)
+        function generateTxtReport(score, max, percent, level, fortalezas, mejoras, observacionesHTML) {
+            let content = "========================================================================\n";
+            content += "       PROMPT PARA INTELIGENCIA ARTIFICIAL (RECOMENDACIONES DUA)\n";
+            content += "========================================================================\n\n";
+            content += "ROL: Actúa como un experto en Diseño Universal para el Aprendizaje (DUA) y en planificación educativa (docente). Tu objetivo es proporcionar recomendaciones concretas y accionables para mejorar los aspectos calificados como 'Parcial' o 'No'.\n\n";
+            content += "TAREA: Analiza la siguiente valoración DUA de una propuesta de clase y genera un plan de mejora basado en las 'Oportunidades de Mejora' y el contexto de las 'Observaciones'.\n";
+            content += "------------------------------------------------------------------------\n";
+            
+            content += "1. CONTEXTO Y VALORACIÓN DE LA PROPUESTA\n";
+            content += "--------------------------------------------------------\n";
+            content += `Puntuación Total DUA: ${score} / ${max} (Máximo: 20 pts)\n`;
+            content += `Porcentaje de Aplicación: ${percent.toFixed(0)}%\n`;
+            content += `Nivel de Aplicación: ${level}\n`;
+            content += "Fecha de Valoración: " + new Date().toLocaleDateString('es-UY') + "\n\n";
+
+            content += "2. FORTALEZAS (Aplicación DUA Sólida)\n";
+            content += "--------------------------------------------------------\n";
+            if (fortalezas.length > 0) {
+                fortalezas.forEach((f, index) => {
+                    // f is: [1.1] Descripcion (Sí, 2 pts) — Obs: Observation Text
+                    content += `[${index + 1}] ${f.replace(/— Obs: /, ' | Observación: ')}\n`;
+                });
+            } else {
+                content += "No se identificaron fortalezas DUA con puntaje 'Sí'.\n";
+            }
+            content += "\n";
+
+            content += "3. OPORTUNIDADES DE MEJORA (Aspectos a Fortalecer - Enfoque Principal)\n";
+            content += "--------------------------------------------------------\n";
+            if (mejoras.length > 0) {
+                mejoras.forEach((m, index) => {
+                    // m is: [1.1] Descripcion (Parcial, 1 pts) — Obs: Observation Text
+                    content += `[${index + 1}] ${m.replace(/— Obs: /, ' | Observación: ')}\n`;
+                });
+            } else {
+                content += "¡Excelente! No hay oportunidades de mejora identificadas por la valoración (100% de aplicación).\n";
+            }
+            content += "\n";
+
+            content += "4. OBSERVACIONES DETALLADAS\n";
+            content += "--------------------------------------------------------\n";
+            // Limpiar etiquetas HTML para el TXT
+            const cleanObs = observacionesHTML.replace(/<br>/g, '\n').replace(/<\/?strong>/g, '');
+            content += cleanObs || 'No se registraron observaciones.';
+            content += "\n\n========================================================================\n";
+            content += "RECOMENDACIÓN FINAL PARA LA IA:\nGenera un conjunto de posibles recomendaciones solo para los ítems de 'Oportunidades de Mejora'. También ofrece para los grupos de Oportunidades de Mejora estrategias prácticas-didácticas concretas.\n";
+            content += "Si se adjuntó una planificación o plan de clase, úsala para dar recomendaciones más específicas.\n";
+            content += "========================================================================\n";
+
+            return content;
+        }
+
+        document.getElementById('dua-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            
+            let totalScore = 0;
+            const totalItems = DUA_ITEMS.length; // Ahora 10
+            let fortalezas = [];
+            let mejoras = [];
+            let observacionesHTML = '';
+            
+            let allAnswered = true;
+
+            DUA_ITEMS.forEach(item => {
+                const radios = form.elements[item.id];
+                let selectedValue = null;
+                
+                // Buscar el valor seleccionado
+                for (const radio of radios) {
+                    if (radio.checked) {
+                        selectedValue = parseInt(radio.value);
+                        break;
+                    }
+                }
+                
+                if (selectedValue === null) {
+                    allAnswered = false;
+                    return; // Sale del forEach si falta respuesta
+                }
+                
+                totalScore += selectedValue;
+
+                // Capturar observaciones
+                const obsElement = document.getElementById(`obs_${item.id}`);
+                const obsText = obsElement ? obsElement.value.trim() : '';
+
+                // Clasificación DUA
+                const scoreDesc = selectedValue === 2 ? 'Sí' : (selectedValue === 1 ? 'Parcial' : 'No');
+                const detail = `(${scoreDesc}, ${selectedValue} pts) ${obsText ? `— Obs: ${obsText}` : ''}`;
+
+                if (selectedValue === 2) {
+                    fortalezas.push(`[${item.name}] ${item.desc} ${detail}`);
+                } else {
+                    mejoras.push(`[${item.name}] ${item.desc} ${detail}`);
+                }
+
+                // Acumular observaciones para el informe HTML y TXT
+                if (obsText) {
+                    observacionesHTML += `<strong>${item.name}:</strong> ${obsText}<br>`;
+                }
+            });
+
+            // 1. Validación de formulario
+            if (!allAnswered) {
+                document.getElementById('modal-alert').classList.remove('hidden');
+                return;
+            }
+
+            // 2. Cálculo de puntuación y nivel
+            const maxScore = totalItems * 2; // 10 items * 2 = 20
+            const percentage = (totalScore / maxScore) * 100;
+
+            let applicationLevel = '';
+            let color = '';
+            if (percentage >= 80) { // 16-20 pts
+                applicationLevel = 'Óptima (Altamente Alineada con DUA)';
+                color = 'text-accent-green';
+            } else if (percentage >= 50) { // 10-15 pts
+                applicationLevel = 'Adecuada (Necesita Refinamiento)';
+                color = 'text-primary-blue';
+            } else { // 0-9 pts
+                applicationLevel = 'Inicial (Requiere Modificaciones Sustanciales)';
+                color = 'text-soft-red';
+            }
+            
+            // 3. Actualizar el DOM (Informe Interactivo)
+            const scoreSummary = document.getElementById('score-summary');
+            scoreSummary.innerHTML = `
+                <p class="text-xl font-semibold mb-2">Puntuación Total DUA: <span class="text-2xl font-extrabold ${color}">${totalScore} / ${maxScore}</span></p>
+                <p class="text-lg">Nivel de Aplicación: <span class="font-bold ${color}">${applicationLevel} (${percentage.toFixed(0)}%)</span></p>
+            `;
+
+            const fortalezasList = document.getElementById('fortalezas-list');
+            fortalezasList.innerHTML = fortalezas.map(f => `<li class="text-sm md:text-base">${f.replace(/— Obs: /, ' — Obs: ')}</li>`).join('');
+            if (fortalezas.length === 0) {
+                 fortalezasList.innerHTML = '<li class="text-sm md:text-base italic text-gray-500">No se identificaron fortalezas DUA con puntaje "Sí".</li>';
+            }
+            
+            const mejorasList = document.getElementById('mejoras-list');
+            mejorasList.innerHTML = mejoras.map(m => `<li class="text-sm md:text-base text-soft-red">${m.replace(/— Obs: /, ' — Obs: ')}</li>`).join('');
+            if (mejoras.length === 0) {
+                 mejorasList.innerHTML = '<li class="text-sm md:text-base italic text-gray-500">¡Excelente! Todos los criterios fueron evaluados como "Sí".</li>';
+            }
+
+            const obsContent = document.getElementById('obs-content');
+            obsContent.innerHTML = observacionesHTML || '<span class="italic text-gray-500">No se registraron observaciones.</span>';
+
+            document.getElementById('report-container').classList.remove('hidden');
+            document.getElementById('report-container').scrollIntoView({ behavior: 'smooth' });
+
+            // 4. Generar y descargar el archivo TXT
+            const txtContent = generateTxtReport(totalScore, maxScore, percentage, applicationLevel, fortalezas, mejoras, observacionesHTML);
+            downloadTxtReport(txtContent);
+        });
+    </script>
 </body>
 </html>
